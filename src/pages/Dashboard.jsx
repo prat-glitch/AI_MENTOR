@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import PlanCard from "../components/PlanCard";
 import SegmentedProgressCircle from "../components/SegmentedProgressCircle";
+import Navbar from "../components/Navbar";
 
 const samplePlan = [
   { subject: "Organic Chemistry", duration: "50 min" },
@@ -33,51 +34,131 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-10">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-        {/* Left Column */}
-        <div className="flex flex-col gap-8">
-          {/* Greeting Card */}
-          <div className="bg-white rounded-3xl shadow-xl p-8">
-            <h2 className="text-2xl font-bold m-0">Hi Pratyush, ready to learn?</h2>
-            <p className="text-gray-500 my-4 mb-6">
-              Here’s your personalized plan for today. Let’s crush your goals!
-            </p>
-            <button onClick={handleNextQuestate} className="bg-indigo-500 text-white rounded-xl w-full py-3 font-bold text-lg hover:bg-indigo-600 transition">
-              Next Questate
-            </button>
-          </div>
-          {/* Plan Card */}
-          <PlanCard planItems={samplePlan} onExplainEasier={handleExplainEasier} onGiveHarder={handleGiveHarder} />
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+      <Navbar />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Welcome Header */}
+        <div className="mb-8 animate-fade-in">
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">
+            Welcome back, <span className="gradient-text">Pratyush</span>! 👋
+          </h1>
+          <p className="text-xl text-gray-600">
+            Ready to continue your learning journey? Let's make today productive!
+          </p>
         </div>
-        {/* Right Column */}
-        <div className="flex flex-col gap-8">
-          {/* Segmented Progress Circle for Today */}
-          <div className="bg-white rounded-3xl shadow-xl p-8 flex flex-col items-center">
-            <h3 className="text-xl font-semibold mb-4">Today's Progress by Subject</h3>
-            <SegmentedProgressCircle segments={todaySegments} label={"Today"} />
-          </div>
-          {/* Segmented Progress Circle for Overall Course */}
-          <div className="bg-white rounded-3xl shadow-xl p-8 flex flex-col items-center">
-            <h3 className="text-xl font-semibold mb-4">Overall Course Progress</h3>
-            <SegmentedProgressCircle segments={overallSegments} label={"Course"} />
-          </div>
-          {/* Progress List Section */}
-          <div className="bg-white rounded-3xl shadow-xl p-8">
-            <h3 className="text-xl font-semibold mb-4">Today's Plan Overview</h3>
-            {samplePlan.map((item, idx) => (
-              <div key={idx} className="flex justify-between items-center bg-gray-100 rounded-lg px-4 py-2 mb-2 text-base">
-                <span className="font-medium">{item.subject}</span>
-                <span className="text-indigo-500 font-semibold">{item.duration}</span>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Main Content */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* Quick Actions Card */}
+            <div className="card-modern animate-slide-up">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold text-gray-900">Quick Actions</h2>
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white text-xl">
+                  ⚡
+                </div>
               </div>
-            ))}
+              <p className="text-gray-600 mb-6">
+                Here's your personalized plan for today. Let's crush your goals!
+              </p>
+              <button 
+                onClick={handleNextQuestate} 
+                className="btn-primary w-full text-lg py-4 rounded-2xl"
+              >
+                🚀 Start Next Questate
+              </button>
+            </div>
+
+            {/* Study Plan Card */}
+            <div className="card-modern animate-slide-up delay-200">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-xl font-bold text-gray-900">Today's Study Plan</h3>
+                <div className="flex space-x-2">
+                  <button 
+                    onClick={handleExplainEasier}
+                    className="btn-ghost text-sm px-3 py-2"
+                  >
+                    📚 Easier
+                  </button>
+                  <button 
+                    onClick={handleGiveHarder}
+                    className="btn-ghost text-sm px-3 py-2"
+                  >
+                    🔥 Harder
+                  </button>
+                </div>
+              </div>
+              <div className="space-y-4">
+                {samplePlan.map((item, idx) => (
+                  <div key={idx} className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border border-blue-100">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold">
+                        {idx + 1}
+                      </div>
+                      <div>
+                        <div className="font-semibold text-gray-900">{item.subject}</div>
+                        <div className="text-sm text-gray-600">Study Session</div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-bold text-blue-600">{item.duration}</div>
+                      <div className="text-sm text-gray-500">Duration</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-          {/* Weak Topics Section */}
-          <div className="bg-white rounded-3xl shadow-xl p-8">
-            <div className="font-medium mb-2">Weak Topics</div>
-            <div className="flex gap-2 flex-wrap">
-              <span className="bg-indigo-50 text-indigo-500 rounded-lg px-3 py-1 font-medium">Thermodynamics</span>
-              <span className="bg-indigo-50 text-indigo-500 rounded-lg px-3 py-1 font-medium">Organic Chemistry</span>
+
+          {/* Sidebar */}
+          <div className="space-y-8">
+            {/* Today's Progress */}
+            <div className="card-gradient animate-slide-up delay-300">
+              <div className="text-center mb-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Today's Progress</h3>
+                <p className="text-gray-600">By Subject</p>
+              </div>
+              <SegmentedProgressCircle segments={todaySegments} label={"Today"} />
+            </div>
+
+            {/* Overall Progress */}
+            <div className="card-gradient animate-slide-up delay-400">
+              <div className="text-center mb-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Course Progress</h3>
+                <p className="text-gray-600">Overall Performance</p>
+              </div>
+              <SegmentedProgressCircle segments={overallSegments} label={"Course"} />
+            </div>
+
+            {/* Weak Topics */}
+            <div className="card-modern animate-slide-up delay-500">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-bold text-gray-900">Focus Areas</h3>
+                <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg flex items-center justify-center text-white text-sm">
+                  🎯
+                </div>
+              </div>
+              <p className="text-gray-600 text-sm mb-4">Topics that need more attention</p>
+              <div className="flex flex-wrap gap-2">
+                <span className="bg-gradient-to-r from-orange-100 to-red-100 text-orange-700 px-3 py-2 rounded-lg text-sm font-medium border border-orange-200">
+                  Thermodynamics
+                </span>
+                <span className="bg-gradient-to-r from-orange-100 to-red-100 text-orange-700 px-3 py-2 rounded-lg text-sm font-medium border border-orange-200">
+                  Organic Chemistry
+                </span>
+              </div>
+            </div>
+
+            {/* Study Streak */}
+            <div className="card-modern animate-slide-up delay-600">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white text-2xl">
+                  🔥
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">Study Streak</h3>
+                <div className="text-3xl font-bold gradient-text mb-2">7 Days</div>
+                <p className="text-gray-600 text-sm">Keep it up! You're on fire! 🔥</p>
+              </div>
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 const ProfileSetup = () => {
   const [name, setName] = useState("");
@@ -23,68 +24,143 @@ const ProfileSetup = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-      <div className="bg-white rounded-3xl shadow-xl p-10 min-w-[320px] flex flex-col items-center">
-        <h2 className="text-2xl font-bold mb-6">Profile Setup</h2>
-        <form className="w-full" onSubmit={handleNext}>
-          <input
-            type="text"
-            placeholder="Name"
-            value={name}
-            onChange={e => setName(e.target.value)}
-            className="w-full px-4 py-3 rounded-xl border border-gray-200 mb-4 text-base focus:outline-none focus:ring-2 focus:ring-indigo-200"
-          />
-          <div className="w-full mb-4">
-            <span className="font-medium text-base">Exam Type</span>
-            <div className="flex gap-6 mt-2">
-              <label className="flex items-center gap-2">
-                <input type="radio" checked={exam === "JEE"} onChange={() => setExam("JEE")} />
-                <span>JEE</span>
-              </label>
-              <label className="flex items-center gap-2">
-                <input type="radio" checked={exam === "NEET"} onChange={() => setExam("NEET")} />
-                <span>NEET</span>
-              </label>
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+      <Navbar />
+      <div className="flex items-center justify-center min-h-[calc(100vh-80px)] p-4">
+        <div className="w-full max-w-2xl">
+          {/* Header */}
+          <div className="text-center mb-8 animate-fade-in">
+            <div className="w-20 h-20 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-3xl flex items-center justify-center mx-auto mb-6 text-white text-3xl">
+              👤
             </div>
+            <h1 className="text-4xl font-bold text-gray-900 mb-2">Complete Your Profile</h1>
+            <p className="text-xl text-gray-600">Help us personalize your learning experience</p>
           </div>
-          <div className="w-full mb-4">
-            <span className="font-medium text-base">Subjects</span>
-            <div className="flex gap-3 mt-2 flex-wrap">
-              {subjectOptions.map(subj => (
-                <button
-                  key={subj}
-                  type="button"
-                  onClick={() => toggleSubject(subj)}
-                  className={`px-4 py-2 rounded-lg font-medium border transition ` +
-                    (subjects.includes(subj)
-                      ? "border-indigo-500 bg-indigo-50 text-indigo-600"
-                      : "border-gray-200 bg-gray-50 text-gray-900 hover:bg-indigo-50")}
+
+          {/* Form Card */}
+          <div className="card-modern animate-slide-up">
+            <form className="space-y-8" onSubmit={handleNext}>
+              {/* Name Input */}
+              <div>
+                <label className="block text-lg font-semibold text-gray-700 mb-3">
+                  What's your name?
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter your full name"
+                  value={name}
+                  onChange={e => setName(e.target.value)}
+                  className="input-modern text-lg py-4"
+                  required
+                />
+              </div>
+
+              {/* Exam Type */}
+              <div>
+                <label className="block text-lg font-semibold text-gray-700 mb-4">
+                  Which exam are you preparing for?
+                </label>
+                <div className="grid grid-cols-2 gap-4">
+                  <label className={`p-6 rounded-2xl border-2 cursor-pointer transition-all duration-200 ${
+                    exam === "JEE" 
+                      ? "border-blue-500 bg-blue-50 shadow-lg" 
+                      : "border-gray-200 bg-white hover:border-blue-300"
+                  }`}>
+                    <input 
+                      type="radio" 
+                      value="JEE" 
+                      checked={exam === "JEE"} 
+                      onChange={() => setExam("JEE")}
+                      className="sr-only"
+                    />
+                    <div className="text-center">
+                      <div className="text-2xl mb-2">🔬</div>
+                      <div className="font-bold text-lg text-gray-900">JEE</div>
+                      <div className="text-sm text-gray-600">Joint Entrance Exam</div>
+                    </div>
+                  </label>
+                  <label className={`p-6 rounded-2xl border-2 cursor-pointer transition-all duration-200 ${
+                    exam === "NEET" 
+                      ? "border-blue-500 bg-blue-50 shadow-lg" 
+                      : "border-gray-200 bg-white hover:border-blue-300"
+                  }`}>
+                    <input 
+                      type="radio" 
+                      value="NEET" 
+                      checked={exam === "NEET"} 
+                      onChange={() => setExam("NEET")}
+                      className="sr-only"
+                    />
+                    <div className="text-center">
+                      <div className="text-2xl mb-2">🩺</div>
+                      <div className="font-bold text-lg text-gray-900">NEET</div>
+                      <div className="text-sm text-gray-600">National Eligibility Test</div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              {/* Subjects */}
+              <div>
+                <label className="block text-lg font-semibold text-gray-700 mb-4">
+                  Select your subjects
+                </label>
+                <div className="grid grid-cols-2 gap-3">
+                  {subjectOptions.map(subj => (
+                    <button
+                      key={subj}
+                      type="button"
+                      onClick={() => toggleSubject(subj)}
+                      className={`p-4 rounded-xl font-semibold text-lg transition-all duration-200 border-2 ${
+                        subjects.includes(subj)
+                          ? "border-blue-500 bg-blue-50 text-blue-700 shadow-lg"
+                          : "border-gray-200 bg-white text-gray-700 hover:border-blue-300 hover:bg-blue-50"
+                      }`}
+                    >
+                      {subj}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Target Year */}
+              <div>
+                <label className="block text-lg font-semibold text-gray-700 mb-3">
+                  Target Year
+                </label>
+                <select
+                  value={goal}
+                  onChange={e => setGoal(e.target.value)}
+                  className="input-modern text-lg py-4"
+                  required
                 >
-                  {subj}
-                </button>
-              ))}
+                  <option value="">Select your target year</option>
+                  {goalOptions.map(opt => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                className="btn-primary w-full text-xl py-5 rounded-2xl"
+              >
+                Complete Setup →
+              </button>
+            </form>
+          </div>
+
+          {/* Progress Indicator */}
+          <div className="mt-8 text-center animate-fade-in delay-300">
+            <div className="flex items-center justify-center space-x-2 text-gray-600">
+              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
             </div>
+            <p className="text-sm text-gray-500 mt-2">Step 2 of 3</p>
           </div>
-          <div className="w-full mb-6">
-            <span className="font-medium text-base">Goal</span>
-            <select
-              value={goal}
-              onChange={e => setGoal(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 mt-2 text-base focus:outline-none focus:ring-2 focus:ring-indigo-200"
-            >
-              <option value="">Target Year</option>
-              {goalOptions.map(opt => (
-                <option key={opt} value={opt}>{opt}</option>
-              ))}
-            </select>
-          </div>
-          <button
-            type="submit"
-            className="w-full py-3 rounded-xl bg-indigo-500 text-white font-bold text-lg hover:bg-indigo-600 transition"
-          >
-            Next
-          </button>
-        </form>
+        </div>
       </div>
     </div>
   );
