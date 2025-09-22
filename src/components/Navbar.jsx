@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
+import LoginIcon from "@mui/icons-material/Login";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import QuizIcon from "@mui/icons-material/Quiz";
+import PersonIcon from "@mui/icons-material/Person";
 
 const Navbar = () => {
   const location = useLocation();
@@ -20,12 +26,12 @@ const Navbar = () => {
 
   
   const navLinks = [
-    { to: "/", label: "Home", icon: "🏠" },
-    { to: "/signin", label: "Login", icon: "🔑" },
-    { to: "/signup", label: "Sign Up", icon: "✨" },
-    { to: "/dashboard", label: "Dashboard", icon: "📊" },
-    { to: "/quiz", label: "Quiz", icon: "🧠" },
-    { to: "/profile-setup", label: "Profile", icon: "👤" }
+    { to: "/", label: "Home", icon: <HomeIcon fontSize="small" /> },
+    { to: "/signin", label: "Login", icon: <LoginIcon fontSize="small" /> },
+    { to: "/signup", label: "Sign Up", icon: <PersonAddIcon fontSize="small" /> },
+    { to: "/dashboard", label: "Dashboard", icon: <DashboardIcon fontSize="small" /> },
+    { to: "/quiz", label: "Quiz", icon: <QuizIcon fontSize="small" /> },
+    { to: "/profile-setup", label: "Profile", icon: <PersonIcon fontSize="small" /> }
   ];
 
   // Filter out certain links based on current page and login status
@@ -169,7 +175,7 @@ const Navbar = () => {
                   onClick={handleLogout}
                   className="flex items-center space-x-3 px-4 py-3 rounded-xl font-medium transition-all duration-200 text-red-600 hover:text-red-700 hover:bg-red-50 w-full text-left"
                 >
-                  <span className="text-lg">🚪</span>
+                  <span className="text-lg"><LoginIcon fontSize="small" /></span>
                   <span>Logout</span>
                 </button>
               )}

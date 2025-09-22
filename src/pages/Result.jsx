@@ -1,6 +1,11 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import CelebrationIcon from "@mui/icons-material/Celebration";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import HomeIcon from "@mui/icons-material/Home";
+import ReplayIcon from "@mui/icons-material/Replay";
 
 const Result = () => {
   const navigate = useNavigate();
@@ -17,7 +22,7 @@ const Result = () => {
           {/* Result Header */}
           <div className="text-center mb-8 animate-fade-in">
             <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-6 text-white text-3xl">
-              {percent >= 70 ? "🎉" : percent >= 40 ? "👍" : "💪"}
+              {percent >= 70 ? <CelebrationIcon fontSize="large" /> : percent >= 40 ? <ThumbUpIcon fontSize="large" /> : <FitnessCenterIcon fontSize="large" />}
             </div>
             <h1 className="text-4xl font-bold text-gray-900 mb-2">Quiz Complete!</h1>
             <p className="text-xl text-gray-600">Here's how you performed</p>
@@ -55,9 +60,9 @@ const Result = () => {
                 "bg-red-50 border-2 border-red-200"
               }`}>
                 <div className="text-xl font-bold mb-2">
-                  {percent >= 70 && "🎉 Excellent Work!"}
-                  {percent < 70 && percent >= 40 && "👍 Good Effort!"}
-                  {percent < 40 && "💪 Keep Practicing!"}
+                  {percent >= 70 && <span className="inline-flex items-center gap-2"><CelebrationIcon fontSize="small" /> Excellent Work!</span>}
+                  {percent < 70 && percent >= 40 && <span className="inline-flex items-center gap-2"><ThumbUpIcon fontSize="small" /> Good Effort!</span>}
+                  {percent < 40 && <span className="inline-flex items-center gap-2"><FitnessCenterIcon fontSize="small" /> Keep Practicing!</span>}
                 </div>
                 <p className="text-gray-700">
                   {percent >= 70 && "Outstanding performance! You're mastering the concepts brilliantly."}
@@ -72,13 +77,13 @@ const Result = () => {
                   onClick={() => navigate("/dashboard")}
                   className="btn-primary w-full text-lg py-4 rounded-2xl"
                 >
-                  🏠 Go to Dashboard
+                  <span className="inline-flex items-center gap-2"><HomeIcon fontSize="small" /> Go to Dashboard</span>
                 </button>
                 <button
                   onClick={() => navigate("/quiz")}
                   className="btn-secondary w-full text-lg py-4 rounded-2xl"
                 >
-                  🔄 Try Another Quiz
+                  <span className="inline-flex items-center gap-2"><ReplayIcon fontSize="small" /> Try Another Quiz</span>
                 </button>
               </div>
             </div>

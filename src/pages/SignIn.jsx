@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { login } from "../services/auth";
+import VpnKeyIcon from "@mui/icons-material/VpnKey";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -43,7 +44,7 @@ const SignIn = () => {
           {/* Header */}
           <div className="text-center mb-8 animate-fade-in">
             <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white text-2xl">
-              🔑
+              <VpnKeyIcon />
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome Back!</h1>
             <p className="text-gray-600">Sign in to continue your learning journey</p>

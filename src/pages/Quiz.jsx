@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getquiz } from "../services/quizservice";
 import Navbar from "../components/Navbar";
+import PsychologyIcon from "@mui/icons-material/Psychology";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
@@ -112,7 +115,7 @@ const Quiz = () => {
         <div className="text-center mb-8 animate-fade-in">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center text-white text-xl">
-              🧠
+              <PsychologyIcon />
             </div>
             <h1 className="text-3xl font-bold text-gray-900">AI Quiz Challenge</h1>
           </div>
@@ -213,7 +216,7 @@ const Quiz = () => {
                     : "btn-secondary hover:scale-105"
                 }`}
               >
-                ← Previous
+                <span className="inline-flex items-center gap-1"><ArrowBackIcon fontSize="small" /> Previous</span>
               </button>
               <button
                 onClick={handleNext}
@@ -224,7 +227,7 @@ const Quiz = () => {
                     : "btn-primary hover:scale-105"
                 }`}
               >
-                {current === questions.length - 1 ? "Finish Quiz →" : "Next →"}
+                <span className="inline-flex items-center gap-1">{current === questions.length - 1 ? <>Finish Quiz <ArrowForwardIcon fontSize="small" /></> : <>Next <ArrowForwardIcon fontSize="small" /></>}</span>
               </button>
             </div>
           </div>

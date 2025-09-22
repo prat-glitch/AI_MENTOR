@@ -54,4 +54,4 @@ app.get("/me", (req, res) => {
     }
   });
 
-app.listen(5000, () => console.log("Auth server running at http://localhost:5000"));
+app.listen(5000, () => console.log("Auth server running at  https://ai-mentor-b7hg.onrender.com"));

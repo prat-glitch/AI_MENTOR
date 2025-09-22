@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000";
+const API_URL = "https://ai-mentor-b7hg.onrender.com";
 
 export async function signup(email, password) {
   const res = await fetch(`${API_URL}/signup`, {

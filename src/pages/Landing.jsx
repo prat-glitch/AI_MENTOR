@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PsychologyIcon from "@mui/icons-material/Psychology";
+import AnalyticsIcon from "@mui/icons-material/Analytics";
+import FlashOnIcon from "@mui/icons-material/FlashOn";
 import Navbar from "../components/Navbar";
 
 const Landing = () => (
@@ -77,7 +80,7 @@ const Landing = () => (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="card-gradient text-center hover-lift">
             <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white text-2xl">
-              🧠
+              <PsychologyIcon />
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-4">Smart Learning</h3>
             <p className="text-gray-600">
@@ -87,7 +90,7 @@ const Landing = () => (
           
           <div className="card-gradient text-center hover-lift">
             <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white text-2xl">
-              📊
+              <AnalyticsIcon />
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-4">Progress Tracking</h3>
             <p className="text-gray-600">
@@ -97,7 +100,7 @@ const Landing = () => (
           
           <div className="card-gradient text-center hover-lift">
             <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white text-2xl">
-              ⚡
+              <FlashOnIcon />
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-4">Instant Feedback</h3>
             <p className="text-gray-600">

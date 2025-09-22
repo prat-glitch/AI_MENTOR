@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import PlanCard from "../components/PlanCard";
 import SegmentedProgressCircle from "../components/SegmentedProgressCircle";
 import Navbar from "../components/Navbar";
+import BoltIcon from "@mui/icons-material/Bolt";
+import SchoolIcon from "@mui/icons-material/School";
+import WhatshotIcon from "@mui/icons-material/Whatshot";
+import TrackChangesIcon from "@mui/icons-material/TrackChanges";
 
 const samplePlan = [
   { subject: "Organic Chemistry", duration: "50 min" },
@@ -40,7 +44,7 @@ const Dashboard = () => {
         {/* Welcome Header */}
         <div className="mb-8 animate-fade-in">
           <h1 className="text-4xl font-bold text-gray-900 mb-2">
-            Welcome back, <span className="gradient-text">Pratyush</span>! 👋
+            Welcome back, <span className="gradient-text">Pratyush</span>!
           </h1>
           <p className="text-xl text-gray-600">
             Ready to continue your learning journey? Let's make today productive!
@@ -55,7 +59,7 @@ const Dashboard = () => {
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-bold text-gray-900">Quick Actions</h2>
                 <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white text-xl">
-                  ⚡
+                  <BoltIcon />
                 </div>
               </div>
               <p className="text-gray-600 mb-6">
@@ -65,7 +69,7 @@ const Dashboard = () => {
                 onClick={handleNextQuestate} 
                 className="btn-primary w-full text-lg py-4 rounded-2xl"
               >
-                🚀 Start Next Questate
+                <span className="inline-flex items-center gap-2"><SchoolIcon fontSize="small" /> Start Next Questate</span>
               </button>
             </div>
 
@@ -78,13 +82,13 @@ const Dashboard = () => {
                     onClick={handleExplainEasier}
                     className="btn-ghost text-sm px-3 py-2"
                   >
-                    📚 Easier
+                    <span className="inline-flex items-center gap-1"><SchoolIcon fontSize="small" /> Easier</span>
                   </button>
                   <button 
                     onClick={handleGiveHarder}
                     className="btn-ghost text-sm px-3 py-2"
                   >
-                    🔥 Harder
+                    <span className="inline-flex items-center gap-1"><WhatshotIcon fontSize="small" /> Harder</span>
                   </button>
                 </div>
               </div>
@@ -135,7 +139,7 @@ const Dashboard = () => {
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-bold text-gray-900">Focus Areas</h3>
                 <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg flex items-center justify-center text-white text-sm">
-                  🎯
+                  <TrackChangesIcon fontSize="small" />
                 </div>
               </div>
               <p className="text-gray-600 text-sm mb-4">Topics that need more attention</p>
@@ -153,11 +157,11 @@ const Dashboard = () => {
             <div className="card-modern animate-slide-up delay-600">
               <div className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white text-2xl">
-                  🔥
+                  <WhatshotIcon />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">Study Streak</h3>
                 <div className="text-3xl font-bold gradient-text mb-2">7 Days</div>
-                <p className="text-gray-600 text-sm">Keep it up! You're on fire! 🔥</p>
+                <p className="text-gray-600 text-sm">Keep it up! You're on fire!</p>
               </div>
             </div>
           </div>

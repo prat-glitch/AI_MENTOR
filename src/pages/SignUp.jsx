@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { signup } from "../services/auth";
+import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -45,7 +46,7 @@ const SignUp = () => {
           {/* Header */}
           <div className="text-center mb-8 animate-fade-in">
             <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white text-2xl">
-              ✨
+              <EmojiEmotionsIcon />
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Join AI Mentor!</h1>
             <p className="text-gray-600">Start your personalized learning journey today</p>

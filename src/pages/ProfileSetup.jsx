@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import PersonIcon from "@mui/icons-material/Person";
+import ScienceIcon from "@mui/icons-material/Science";
+import MedicalServicesIcon from "@mui/icons-material/MedicalServices";
 
 const ProfileSetup = () => {
   const [name, setName] = useState("");
@@ -31,7 +34,7 @@ const ProfileSetup = () => {
           {/* Header */}
           <div className="text-center mb-8 animate-fade-in">
             <div className="w-20 h-20 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-3xl flex items-center justify-center mx-auto mb-6 text-white text-3xl">
-              👤
+              <PersonIcon fontSize="large" />
             </div>
             <h1 className="text-4xl font-bold text-gray-900 mb-2">Complete Your Profile</h1>
             <p className="text-xl text-gray-600">Help us personalize your learning experience</p>
@@ -74,7 +77,7 @@ const ProfileSetup = () => {
                       className="sr-only"
                     />
                     <div className="text-center">
-                      <div className="text-2xl mb-2">🔬</div>
+                      <div className="text-2xl mb-2"><ScienceIcon /></div>
                       <div className="font-bold text-lg text-gray-900">JEE</div>
                       <div className="text-sm text-gray-600">Joint Entrance Exam</div>
                     </div>
@@ -92,7 +95,7 @@ const ProfileSetup = () => {
                       className="sr-only"
                     />
                     <div className="text-center">
-                      <div className="text-2xl mb-2">🩺</div>
+                      <div className="text-2xl mb-2"><MedicalServicesIcon /></div>
                       <div className="font-bold text-lg text-gray-900">NEET</div>
                       <div className="text-sm text-gray-600">National Eligibility Test</div>
                     </div>
